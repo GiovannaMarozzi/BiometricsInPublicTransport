@@ -16,21 +16,24 @@ public class Passenger{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "name", nullable = false)
     String name;
 
-    @Column(name = "CPF", unique = true, nullable = false)
+    @Column(name = "CPF", nullable = false)
     String cpf;
 
-    @Column(name = "RG", unique = true, nullable = false)
+    @Column(name = "RG", nullable = false)
     String rg;
 
-    @Column(name = "addess", unique = true, nullable = false)
+    @Column(name = "addess", nullable = false)
     String address;
 
-    @Column(name = "time_hour_register", unique = true, nullable = false)
+    @Column(name = "time_hour_register", nullable = false)
     Timestamp time_hour_register;
 
     @Column(name = "senha", unique = true, nullable = false)
     String senha;
+
+    @Column(name = "biometric", unique = true)
+    String biometric;
 }
