@@ -12,9 +12,9 @@ import java.sql.Timestamp;
 @RequestMapping("/register")
 public class RegisterController {
 
-
-    @PostMapping
+    @PostMapping("/biometric")
     public void createNewRegister(){
+        System.out.println("cheguei aqui ");
 
     }
 }
