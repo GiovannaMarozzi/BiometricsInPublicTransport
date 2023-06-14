@@ -30,4 +30,7 @@ public class Passenger{
 
     @Column(name = "time_hour_register", unique = true, nullable = false)
     Timestamp time_hour_register;
+
+    @Column(name = "senha", unique = true, nullable = false)
+    String senha;
 }
