@@ -31,8 +31,8 @@ public class Passenger{
     @Column(name = "time_hour_register", nullable = false)
     Timestamp time_hour_register;
 
-    @Column(name = "senha", unique = true, nullable = false)
-    String senha;
+    @Column(name = "password", unique = true, nullable = false)
+    String password;
 
     @Column(name = "registredBiometric", nullable = false)
     Boolean registredBiometric;

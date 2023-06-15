@@ -18,10 +18,10 @@ public class RegisterController {
     @Autowired
     private RegisterService service;
 
-    @GetMapping("/senha={senha}")
-    public ResponseEntity<?> generateInformations(@PathVariable String senha) {
+    @GetMapping("/password={password}")
+    public ResponseEntity<?> generateInformations(@PathVariable String password) {
         try {
-            Passenger passenger = service.generateInformations(senha);
+            Passenger passenger = service.generateInformations(password);
             if (passenger != null) {
                 return ResponseEntity.ok(passenger);
             } else {
@@ -32,18 +32,33 @@ public class RegisterController {
         }
     }
 
-    @PutMapping("/senha={senha}")
+    @PutMapping("/password={password}")
     @Transactional
-    public ResponseEntity<?> updateInformations(@PathVariable String senha, @RequestBody Passenger informationUpdade) {
+    public ResponseEntity<?> updateInformations(@PathVariable String password, @RequestBody Passenger informationUpdade) {
         try {
-            Passenger passenger = service.generateInformations(senha);
-            if (passenger != null){
-                System.out.println(informationUpdade);
+            Passenger passenger = service.generateInformations(password);
+            if (passenger != null) {
                 service.updateInformations(passenger, informationUpdade);
-            }else{
+            } else {
                 throw new ChangeSetPersister.NotFoundException();
             }
-            return ResponseEntity.ok("Chegou aqui");
+            return ResponseEntity.ok("Informações alteradas!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum dado encontrado");
+        }
+    }
+
+    @DeleteMapping("/cpf={cpf}")
+    @Transactional
+    public ResponseEntity<?> removeRegister(@PathVariable String cpf) {
+        try {
+            Passenger passenger = service.generateInformationsForCpf(cpf);
+            if (passenger != null) {
+                service.deleteInformations(passenger);
+                return ResponseEntity.ok("Informações Deletadas!");
+            } else {
+                throw new ChangeSetPersister.NotFoundException();
+            }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum dado encontrado");
         }

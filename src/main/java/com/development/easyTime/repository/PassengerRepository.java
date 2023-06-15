@@ -4,5 +4,7 @@ import com.development.easyTime.passenger.Passenger;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PassengerRepository extends JpaRepository <Passenger, Long> {
-    Passenger findBySenha(String senha);
+    Passenger findBypassword(String password);
+
+    Passenger findByCpf(String cpf);
 }
