@@ -34,6 +34,9 @@ public class Passenger{
     @Column(name = "senha", unique = true, nullable = false)
     String senha;
 
+    @Column(name = "registredBiometric", nullable = false)
+    Boolean registredBiometric;
+
     @Column(name = "biometric", unique = true)
     String biometric;
 }

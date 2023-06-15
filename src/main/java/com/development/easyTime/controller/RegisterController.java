@@ -2,6 +2,7 @@ package com.development.easyTime.controller;
 
 import com.development.easyTime.passenger.Passenger;
 import com.development.easyTime.service.RegisterService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
@@ -31,4 +32,20 @@ public class RegisterController {
         }
     }
 
+    @PutMapping("/senha={senha}")
+    @Transactional
+    public ResponseEntity<?> updateInformations(@PathVariable String senha, @RequestBody Passenger informationUpdade) {
+        try {
+            Passenger passenger = service.generateInformations(senha);
+            if (passenger != null){
+                System.out.println(informationUpdade);
+                service.updateInformations(passenger, informationUpdade);
+            }else{
+                throw new ChangeSetPersister.NotFoundException();
+            }
+            return ResponseEntity.ok("Chegou aqui");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum dado encontrado");
+        }
+    }
 }

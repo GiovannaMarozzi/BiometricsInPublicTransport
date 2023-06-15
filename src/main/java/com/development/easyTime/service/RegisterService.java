@@ -14,4 +14,21 @@ public class RegisterService {
     public Passenger generateInformations(String senha) {
         return repository.findBySenha(senha);
     }
+
+    public void updateInformations(Passenger originalPassenger, Passenger updatedPassenger) {
+        if (updatedPassenger.getName() != null) {
+            originalPassenger.setName(updatedPassenger.getName());
+        }
+        if (updatedPassenger.getAddress() != null) {
+            originalPassenger.setAddress(updatedPassenger.getAddress());
+        }
+        if (updatedPassenger.getBiometric() != null) {
+            originalPassenger.setBiometric(updatedPassenger.getBiometric());
+        }
+        if (updatedPassenger.getRegistredBiometric() != null) {
+            originalPassenger.setRegistredBiometric(updatedPassenger.getRegistredBiometric());
+        }
+        repository.save(originalPassenger);
+    }
+
 }
