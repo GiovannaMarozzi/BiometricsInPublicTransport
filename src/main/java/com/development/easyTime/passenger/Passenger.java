@@ -25,7 +25,7 @@ public class Passenger{
     @Column(name = "RG", nullable = false)
     String rg;
 
-    @Column(name = "addess", nullable = false)
+    @Column(name = "address", nullable = false)
     String address;
 
     @Column(name = "time_hour_register", nullable = false)
