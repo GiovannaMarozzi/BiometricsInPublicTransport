@@ -33,7 +33,6 @@ public class RegisterController {
     }
 
     @PutMapping("/password={password}")
-    @Transactional
     public ResponseEntity<?> updateInformations(@PathVariable String password, @RequestBody Passenger informationUpdade) {
         try {
             Passenger passenger = service.generateInformations(password);
@@ -49,7 +48,6 @@ public class RegisterController {
     }
 
     @DeleteMapping("/cpf={cpf}")
-    @Transactional
     public ResponseEntity<?> removeRegister(@PathVariable String cpf) {
         try {
             Passenger passenger = service.generateInformationsForCpf(cpf);
@@ -61,6 +59,22 @@ public class RegisterController {
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhum dado encontrado");
+        }
+    }
+
+    @PostMapping("/newPassenger")
+    public ResponseEntity<String> newRegister(@RequestBody Passenger informations) {
+        try {
+            Passenger passenger = service.generateInformationsForCpf(informations.getCpf());
+            if (passenger != null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CPF já cadastrado");
+            }
+
+            service.saveNewPassenger(informations);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Novo Passageito cadastrado com sucesso");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar dados " + e);
         }
     }
 }

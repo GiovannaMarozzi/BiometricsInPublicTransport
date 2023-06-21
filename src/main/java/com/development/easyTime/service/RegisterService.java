@@ -4,6 +4,7 @@ import com.development.easyTime.passenger.Passenger;
 import com.development.easyTime.repository.PassengerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -40,5 +41,10 @@ public class RegisterService {
     @Transactional
     public void deleteInformations(Passenger passenger) {
         repository.deleteById(passenger.getId());
+    }
+
+    @Transactional
+    public void saveNewPassenger(Passenger informations) {
+        repository.save(informations);;
     }
 }
