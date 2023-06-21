@@ -53,7 +53,4 @@ public class Passenger{
     @Column(name = "registredBiometric")
     @NotNull
     Boolean registredBiometric = false;
-
-    @Column(name = "biometric", unique = true)
-    String biometric;
 }

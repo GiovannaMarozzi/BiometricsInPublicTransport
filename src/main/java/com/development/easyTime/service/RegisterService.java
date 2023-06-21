@@ -32,9 +32,6 @@ public class RegisterService {
         if (updatedPassenger.getAddress() != null) {
             originalPassenger.setAddress(updatedPassenger.getAddress());
         }
-        if (updatedPassenger.getBiometric() != null) {
-            originalPassenger.setBiometric(updatedPassenger.getBiometric());
-        }
         if (updatedPassenger.getRegistredBiometric() != null) {
             originalPassenger.setRegistredBiometric(updatedPassenger.getRegistredBiometric());
         }
