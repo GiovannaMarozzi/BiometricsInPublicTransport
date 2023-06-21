@@ -2,8 +2,7 @@ package com.development.easyTime.passenger;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.sql.Timestamp;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @Entity
@@ -17,32 +16,43 @@ public class Passenger{
     Long id;
 
     @Column(name = "name")
-    @NonNull
+    @NotNull
     String name;
 
     @Column(name = "CPF")
-    @NonNull
+    @NotNull
     String cpf;
 
     @Column(name = "RG")
-    @NonNull
+    @NotNull
     String rg;
+    
+    @Column(name = "email")
+    @NotNull
+    String email;
 
     @Column(name = "address")
-    @NonNull
+    @NotNull
     String address;
 
-    @Column(name = "time_hour_register")
-    @NonNull
-    Timestamp time_hour_register;
+    @Column(name = "date_of_birth")
+    @NotNull
+    String date_of_birth;
+
+    @Column(name = "date_register")
+    String date_register;
+
+    @Column(name = "phone")
+    @NotNull
+    String phone;
 
     @Column(name = "password", unique = true)
-    @NonNull
+    @NotNull
     String password;
 
     @Column(name = "registredBiometric")
-    @NonNull
-    Boolean registredBiometric;
+    @NotNull
+    Boolean registredBiometric = false;
 
     @Column(name = "biometric", unique = true)
     String biometric;

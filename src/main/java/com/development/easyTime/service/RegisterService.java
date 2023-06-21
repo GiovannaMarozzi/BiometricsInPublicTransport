@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class RegisterService {
 
@@ -45,6 +48,10 @@ public class RegisterService {
 
     @Transactional
     public void saveNewPassenger(Passenger informations) {
-        repository.save(informations);;
+        Date date = new Date();
+        String dateFormat = new SimpleDateFormat("dd/MM/yyyy").format(date);
+
+        informations.setDate_register(dateFormat);
+        repository.save(informations);
     }
 }

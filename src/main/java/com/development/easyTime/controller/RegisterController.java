@@ -69,7 +69,6 @@ public class RegisterController {
             if (passenger != null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CPF já cadastrado");
             }
-
             service.saveNewPassenger(informations);
             return ResponseEntity.status(HttpStatus.CREATED).body("Novo Passageito cadastrado com sucesso");
 
